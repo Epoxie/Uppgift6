@@ -119,6 +119,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Common\Common.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\SchoolController.cs" />
     <Compile Include="DataAccess\SchoolContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -143,6 +145,10 @@
     <Compile Include="Migrations\201711091323282_Subject2.cs" />
     <Compile Include="Migrations\201711091323282_Subject2.Designer.cs">
       <DependentUpon>201711091323282_Subject2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711101304599_teachers.cs" />
+    <Compile Include="Migrations\201711101304599_teachers.Designer.cs">
+      <DependentUpon>201711101304599_teachers.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
@@ -192,6 +198,10 @@
     <Content Include="Views\School\Index.cshtml" />
     <Content Include="Views\School\Edit.cshtml" />
     <Content Include="Views\School\Delete.cshtml" />
+    <Content Include="Views\Course\Index.cshtml" />
+    <Content Include="Views\Course\Create.cshtml" />
+    <Content Include="Views\Course\Edit.cshtml" />
+    <Content Include="Views\Course\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201711091004490_initial.resx">
@@ -208,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711091323282_Subject2.resx">
       <DependentUpon>201711091323282_Subject2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711101304599_teachers.resx">
+      <DependentUpon>201711101304599_teachers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -10,6 +10,7 @@ namespace MVC_RelationalDatabase.Models
     {
         [Key]
         public int TID { get; set; }
+        public string Name { get; set; }
 
         public ICollection<Course> Course { get; set; }
     }

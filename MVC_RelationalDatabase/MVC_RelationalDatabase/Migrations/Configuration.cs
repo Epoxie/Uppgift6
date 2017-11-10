@@ -21,6 +21,12 @@ namespace MVC_RelationalDatabase.Migrations
                 new Course { Subject = "Psychology" },
                 new Course { Subject = "Maths" }
             );
+            context.Teachers.AddOrUpdate(
+                I => I.Name,
+                new Teacher { Name = "Gustavo" },
+                new Teacher { Name = "Stefan" },
+                new Teacher { Name = "Ernst"}
+            );
         }
     }
 }

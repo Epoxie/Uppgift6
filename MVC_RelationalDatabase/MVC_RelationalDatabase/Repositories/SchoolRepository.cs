@@ -27,21 +27,44 @@ namespace MVC_RelationalDatabase.Repositories
             return SchoolContext.Students.Include(s => s.Course).FirstOrDefault(i => i.SID == id);
         }
 
+        public Course GetCourseDetails(int id)
+        {
+            return SchoolContext.Courses.FirstOrDefault(i => i.CID == id);
+        }
+
         public void AddStudent(Student student)
         {
             SchoolContext.Students.Add(student);
             SchoolContext.SaveChanges();
         }
 
-        public void Edit(Student student)
+        public void AddCourse(Course course)
+        {
+            SchoolContext.Courses.Add(course);
+            SchoolContext.SaveChanges();
+        }
+
+        public void EditStudent(Student student)
         {
             SchoolContext.Entry(student).State = EntityState.Modified;
             SchoolContext.SaveChanges();
         }
 
-        public void Delete(int id)
+        public void EditCourse(Course course)
+        {
+            SchoolContext.Entry(course).State = EntityState.Modified;
+            SchoolContext.SaveChanges();
+        }
+
+        public void DeleteStudent(int id)
         {
             SchoolContext.Students.Remove(GetStudentDetails(id));
+            SchoolContext.SaveChanges();
+        }
+
+        public void DeleteCourse(int id)
+        {
+            SchoolContext.Courses.Remove(GetCourseDetails(id));
             SchoolContext.SaveChanges();
         }
     }

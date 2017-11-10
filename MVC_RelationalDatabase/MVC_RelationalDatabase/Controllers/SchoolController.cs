@@ -1,5 +1,6 @@
 ﻿using MVC_RelationalDatabase.Models;
 using MVC_RelationalDatabase.Repositories;
+using MVC_RelationalDatabase.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,17 +11,15 @@ namespace MVC_RelationalDatabase.Controllers
 {
     public class SchoolController : Controller
     {
-        SchoolRepository SchoolRepository = new SchoolRepository();
-
         // GET: School
         public ActionResult Index()
         {
-            return View(SchoolRepository.GetAllStudents());
+            return View(Common.Common.SchoolRepository.GetAllStudents());
         }
 
         public ActionResult Create()
         {
-            ViewBag.CourseId = new SelectList(SchoolRepository.GetAllCourses(), "CID", "Subject");
+            ViewBag.CourseId = new SelectList(Common.Common.SchoolRepository.GetAllCourses(), "CID", "Subject");
             return View();
         }
 
@@ -31,7 +30,7 @@ namespace MVC_RelationalDatabase.Controllers
         {
             if (ModelState.IsValid)
             {
-                SchoolRepository.AddStudent(student);
+                Common.Common.SchoolRepository.AddStudent(student);
                 return RedirectToAction("Index");
             }
 
@@ -40,8 +39,8 @@ namespace MVC_RelationalDatabase.Controllers
 
         public ActionResult Edit(int id)
         {
-            ViewBag.CourseId = new SelectList(SchoolRepository.GetAllCourses(), "CID", "Subject");
-            return View(SchoolRepository.GetStudentDetails(id));
+            ViewBag.CourseId = new SelectList(Common.Common.SchoolRepository.GetAllCourses(), "CID", "Subject");
+            return View(Common.Common.SchoolRepository.GetStudentDetails(id));
         }
 
         [HttpPost]
@@ -50,7 +49,7 @@ namespace MVC_RelationalDatabase.Controllers
         {
             if (ModelState.IsValid)
             {
-                SchoolRepository.Edit(student);
+                Common.Common.SchoolRepository.EditStudent(student);
                 return RedirectToAction("Index");
             }
             return View(student);
@@ -58,15 +57,15 @@ namespace MVC_RelationalDatabase.Controllers
 
         public ActionResult Delete(int id)
         {
-            ViewBag.CourseId = new SelectList(SchoolRepository.GetAllCourses(), "CID", "Subject");
-            return View(SchoolRepository.GetStudentDetails(id));
+            ViewBag.CourseId = new SelectList(Common.Common.SchoolRepository.GetAllCourses(), "CID", "Subject");
+            return View(Common.Common.SchoolRepository.GetStudentDetails(id));
         }
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            SchoolRepository.Delete(id);
+            Common.Common.SchoolRepository.DeleteStudent(id);
             return RedirectToAction("Index");
         }
     }
